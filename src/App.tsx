@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import TodoForm, { ITodo } from "./components/TodoForm";
 import Todo from "./components/Todo";
+import { Trash } from "lucide-react";
 
 function App() {
   const [todos, setTodos] = useState<ITodo[]>(
@@ -9,6 +10,7 @@ function App() {
   );
   const [status, setStatus] = useState<string>("all");
   const [filteredTodos, setFilteredTodos] = useState<ITodo[]>([]);
+  const [toggleAllCompleted, setToggleAllCompleted] = useState(true);
 
   useEffect(() => {
     filterHandler();
@@ -46,7 +48,11 @@ function App() {
 
   // deleting todo from the list
   function deleteTodo(id: string) {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    // prompt("Are you sure to delete this todo?");
+    if (window.confirm("Are you sure to delete this todo?")) {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    }
+    return;
   }
 
   // toggle todo
@@ -81,7 +87,7 @@ function App() {
 
       <div>
         <button
-          className="update-btn btn"
+          className={`update-btn btn ${status === "all" ? "active" : ""}`}
           onClick={() => {
             setStatus("all");
           }}
@@ -89,17 +95,61 @@ function App() {
           All
         </button>
         <button
-          className="update-btn btn"
+          className={`update-btn btn ${
+            status === "uncompleted" ? "active" : ""
+          }`}
           onClick={() => setStatus("uncompleted")}
         >
           uncompleted
         </button>
         <button
-          className="update-btn btn"
+          className={`update-btn btn ${status === "completed" ? "active" : ""}`}
           onClick={() => setStatus("completed")}
         >
           Completed
         </button>
+      </div>
+
+      <div style={{ gap: "10px", flexDirection: "column", display: "flex" }}>
+        {todos.some((todo) => todo.completed === true) ? (
+          <button
+            className="all-btn btn"
+            onClick={() => setTodos(todos.filter((todo) => !todo.completed))}
+          >
+            Clear Completed Todos
+          </button>
+        ) : null}
+        <button
+          className="all-btn btn"
+          onClick={() => {
+            setTodos(
+              todos.map((todo) => {
+                return {
+                  ...todo,
+                  completed: toggleAllCompleted,
+                };
+              })
+            );
+            setToggleAllCompleted(!toggleAllCompleted);
+          }}
+        >
+          Toggle All Completed: {`${toggleAllCompleted}`}
+        </button>
+        {todos.length ? (
+          <button
+            className="btn all-btn"
+            style={{
+              display: "flex",
+              gap: "5px",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "red",
+              fontSize: "14px",
+            }}
+          >
+            <span>clear all todos</span> <Trash size={16} />
+          </button>
+        ) : null}
       </div>
     </div>
   );

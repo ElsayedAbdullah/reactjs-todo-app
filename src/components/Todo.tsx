@@ -22,10 +22,10 @@ const Todo = ({ id, text, completed, deleteTodo, toggleTodo }: IProps) => {
       </p>
       <div style={{ gap: "10px", justifyContent: "flex-end", display: "flex" }}>
         <button className="btn delete-btn" onClick={() => toggleTodo(id)}>
-          <CheckCircle color="green" />
+          <CheckCircle color="green" size={16} />
         </button>
         <button className="btn delete-btn" onClick={() => deleteTodo(id)}>
-          <Trash color="red" />
+          <Trash color="red" size={16} />
         </button>
       </div>
     </div>
