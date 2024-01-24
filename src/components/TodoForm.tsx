@@ -41,7 +41,7 @@ const TodoForm = ({ addTodo }: IProps) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ display: "flex", gap: "10px" }}>
       <input
         type="text"
         className="input-field"
@@ -50,6 +50,7 @@ const TodoForm = ({ addTodo }: IProps) => {
         value={input}
         ref={inputRef}
         autoFocus
+        style={{ flex: 1 }}
       />
       <button className="btn" type="submit">
         Add Todo

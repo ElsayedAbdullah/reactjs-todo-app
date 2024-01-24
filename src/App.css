@@ -15,20 +15,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 80px;
+  padding: 0 10px;
 }
 .input-field {
-  width: 220px;
   height: 30px;
   background: none;
-  margin-right: 15px;
   outline: none;
   border-radius: 30px;
   border: none;
   background-color: transparent;
   box-shadow: 3px 3px 3px #222327, -3px -3px 3px #363636;
   color: #fff;
-  padding: 0 15px;
-  font-size: 16px;
+  padding: 0 12px;
+  font-size: 15px;
 }
 .btn,
 .delete-btn {
@@ -38,15 +37,18 @@ body {
   color: #fff;
   font-size: 14px;
   box-shadow: 3px 3px 3px #222327, -3px -3px 3px #363636;
-  width: 80px;
+  width: auto;
   height: 30px;
   border-radius: 30px;
   cursor: pointer;
+  padding: 0 10px;
+  flex-shrink: 0;
 }
 .delete-btn {
   width: 25px;
   height: 25px;
   border-radius: 50%;
+  padding: 0;
 }
 .btn:hover,
 .input-field:hover,
@@ -94,4 +96,14 @@ body {
 
 .update-btn.active {
   background-color: #3f4663;
+}
+
+.update-btn-hover {
+  background-color: #22de2b;
+  transition: all 0.3s;
+  color: #000;
+}
+.update-btn-hover:hover {
+  background-color: #29ac30;
+  box-shadow: none;
 }
