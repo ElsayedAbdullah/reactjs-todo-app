@@ -19,7 +19,6 @@ const Todo = ({
   updateTodo,
 }: IProps) => {
   const [isEdit, setIsEdit] = useState(false);
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Edit Todo
@@ -38,7 +37,6 @@ const Todo = ({
           display: "flex",
           flexWrap: "wrap",
           gap: "10px",
-          // maxWidth: "300px",
           margin: "10px auto",
         }}
       >
