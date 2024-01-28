@@ -19,7 +19,6 @@ const Todo = ({
   updateTodo,
 }: IProps) => {
   const [isEdit, setIsEdit] = useState(false);
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Edit Todo
@@ -34,7 +33,12 @@ const Todo = ({
       <form
         onSubmit={submitEdit}
         className="d-f"
-        style={{ maxWidth: "300px", margin: "10px auto" }}
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
+          margin: "10px auto",
+        }}
       >
         <input
           ref={inputRef}
@@ -42,7 +46,7 @@ const Todo = ({
           type="text"
           defaultValue={text}
         />
-        <button type="submit" className="btn">
+        <button type="submit" className="btn update-btn-hover">
           Update
         </button>
       </form>
@@ -70,7 +74,9 @@ const Todo = ({
         <button
           title="Edit"
           className="btn delete-btn"
-          onClick={() => setIsEdit(true)}
+          onClick={() => {
+            setIsEdit(true);
+          }}
         >
           <Edit color="skyblue" size={16} />
         </button>
