@@ -20,6 +20,11 @@ const TodoForm = ({ addTodo }: IProps) => {
     // prevent page refresh
     e.preventDefault();
 
+    // validate input
+    if (!input) {
+      return;
+    }
+
     // add todo
     addTodo({
       id: uuidv4(),

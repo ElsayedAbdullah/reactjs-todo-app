@@ -47,7 +47,6 @@ body {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  margin-left: 150px;
 }
 .btn:hover,
 .input-field:hover,
@@ -72,8 +71,27 @@ body {
 }
 .update-btn {
   margin: 10px;
+  padding: 10px;
+  width: auto;
+  height: auto;
 }
 .all-btn {
   width: 200px;
-  margin: 10px 0;
+}
+
+.todos-list {
+  margin: 20px auto;
+  width: 100%;
+  border: 1px solid gray;
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 400px;
+}
+
+.todos-list > div {
+  margin-bottom: 10px;
+}
+
+.update-btn.active {
+  background-color: #3f4663;
 }
